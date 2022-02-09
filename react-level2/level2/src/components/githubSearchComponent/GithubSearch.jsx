@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import UserCard from '../userCardComponent/UserCard'
+import "./index.css"
 
 export default function GithubSearch() {
   const [inputValue, setInputValue] = useState(null)
@@ -30,11 +31,16 @@ export default function GithubSearch() {
       }
       {
         users.items?.length > 0 ?
-          users.items.map(({ id, avatar_url, login, url }) => {
-            return (
-              <UserCard key={id} avatar_url={avatar_url} login={login} url={url} />
-            )
-          }) : null
+          <div className='cards-list'>
+            {
+              users.items.map(({ id, avatar_url, login, html_url }) => {
+                return (
+                  <UserCard key={id} avatar_url={avatar_url} login={login} html_url={html_url} />
+                )
+              })
+            }
+          </div>
+          : null
       }
     </>
   )
