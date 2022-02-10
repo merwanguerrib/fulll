@@ -1,5 +1,29 @@
 .cards-list {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.search {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: space-between;
+  margin: 5px;
+  width: 40%;
+  height: 8%;
+}
+
+.search-button,
+.search-input {
+  border-radius: 8px;
+}
+
+.search-input {
+  height: 40%;
+  text-align: center;
+}
+
+.search-button {
 }
