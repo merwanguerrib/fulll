@@ -8,9 +8,14 @@ export default function GithubSearch() {
   const [users, setUsers] = useState({})
 
   const handleSearch = () => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => { setUsers(data) })
+    try {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => { setUsers(data) })
+
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   useEffect(() => {
@@ -24,7 +29,7 @@ export default function GithubSearch() {
         <input className='search-button' type="button" value="Recherche sur Github" onClick={handleSearch} />
       </div>
       {
-        users.items?.length > 0 ? <h2>Nombre de résultats : {users.total_count} </h2> : null
+        users.items?.length >= 0 ? <h2>Nombre de résultats : {users.total_count} </h2> : null
       }
       {
         users.items?.length > 0 ?
